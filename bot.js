@@ -45,7 +45,7 @@ dba = new dbaapi(client.config.dbotSites.botspwToken)
 client.dispatcher.addInhibitor(msg => {
 	const blacklist = client.provider.get('global', 'userBlacklist', []);
 	if (!blacklist.includes(msg.author.id)) return false;
-	msg.react('ğŸ˜¡');
+	msg.react('😡');
 	return true;
 });
 
@@ -66,10 +66,10 @@ const logger = module.exports = new (winston.Logger)({
 
 client.on('guildCreate', async guild => {
     var guildhook = new Discord.WebhookClient(client.config.hooks.guildLogHook.id, client.config.hooks.guildLogHook.token)
-    guildhook.send(`Shard ${client.shard.id + 1} > Yeni Sunucu > Sunucu AdÄ±: "${guild.name}", Sunucu ID: "${guild.id}", Sunucu Sahibi: "${guild.owner}", Sunucu Sahibi ID "${guild.ownerID}" > ${client.guilds.size}. sunucu`)
+    guildhook.send(`Shard ${client.shard.id + 1} > Yeni Sunucu > Sunucu Adı: "${guild.name}", Sunucu ID: "${guild.id}", Sunucu Sahibi: "${guild.owner}", Sunucu Sahibi ID "${guild.ownerID}" > ${client.guilds.size}. sunucu`)
 		const girismesaj = [
 		  '**Sohbet ve Oyun BOT sunucunuza eklendi!**',
-		  '**Sohbet ve Oyun BOT** sunucunuzdaki insanlara ve size kolaylÄ±klar saÄŸlar.',
+		  '**Sohbet ve Oyun BOT** sunucunuzdaki insanlara ve size kolaylıklar sağlar.',
 		  'Bot Hasan Tarafindan Gelistirilmekte',
 		  '.',
 		  '',
@@ -77,13 +77,13 @@ client.on('guildCreate', async guild => {
 		]
 		guild.owner.send(girismesaj)
 
-		logger.log(`data`, `${guild.name} sunucusuna katÄ±ldÄ±m!`);
+		logger.log(`data`, `${guild.name} sunucusuna katıldım!`);
 	})
 
 	.on('guildDelete', async guild => {
 		var guildhook = new Discord.WebhookClient(client.config.hooks.guildLogHook.id, client.config.hooks.guildLogHook.token)
-		guildhook.send(`Shard ${client.shard.id + 1} > AtÄ±ldÄ±m! > Sunucu AdÄ±: "${guild.name}", Sunucu ID: "${guild.id}", Sunucu Sahibi: "${guild.owner}", Sunucu Sahibi ID "${guild.ownerID}"`)
-		logger.log(`data`, `${guild.name} sunucusundan atÄ±ldÄ±m!`);		
+		guildhook.send(`Shard ${client.shard.id + 1} > Atıldım! > Sunucu Adı: "${guild.name}", Sunucu ID: "${guild.id}", Sunucu Sahibi: "${guild.owner}", Sunucu Sahibi ID "${guild.ownerID}"`)
+		logger.log(`data`, `${guild.name} sunucusundan atıldım!`);		
 	})
 	
 	.on("guildMemberAdd", async member => {
@@ -164,7 +164,7 @@ client.on('guildCreate', async guild => {
 		            if (!msg.member.hasPermission("BAN_MEMBERS")) {
 		                msg.delete();
 
-		                return msg.reply('Reklam yapmamalısın!').then(msg => msg.delete(3000));
+		                return msg.reply('Reklam yapmamal��!').then(msg => msg.delete(3000));
 		            }
 	        	} catch(err) {
 	        		console.log(err);
@@ -204,7 +204,7 @@ client.on('guildCreate', async guild => {
 			if (!msg.member.hasPermission("BAN_MEMBERS")) {
 				msg.delete();
 				
-				return msg.reply('Reklam yapmamalÄ±sÄ±n!').then(msg => msg.delete(3000));
+				return msg.reply('Reklam yapmamalısın!').then(msg => msg.delete(3000));
 			} else {
 				return;
 			};
@@ -225,7 +225,7 @@ client.on('guildCreate', async guild => {
 			if (swearWords.some(word => newMsg.content.toLowerCase().includes(word))) {
 				if (!newMsg.member.hasPermission("ADMINISTRATOR")) {
 					newMsg.delete();
-					return newMsg.reply('Reklam yapmamalÄ±sÄ±n!').then(reply => reply.delete(3000));
+					return newMsg.reply('Reklam yapmamalısın!').then(reply => reply.delete(3000));
 				}
 			}
 		}
@@ -234,17 +234,17 @@ client.on('guildCreate', async guild => {
 	.on('ready', async () => {
 		syncGuildCounts();
 		setInterval(syncGuildCounts, 1800000);
-		await client.user.setPresence({ game: { name: `svo!yenilikler | svo!yardım | New Bot`, type: 0 } });
-		logger.log(`info`, `Aktif, komutlar yÃ¼klendi!`);
-		logger.log(`info`, `${client.user.username} ismi ile giriÅŸ yapÄ±ldÄ±!`);
+		await client.user.setPresence({ game: { name: `svo!yenilikler | svo!yard�� New Bot`, type: 0 } });
+		logger.log(`info`, `Aktif, komutlar yüklendi!`);
+		logger.log(`info`, `${client.user.username} ismi ile giriş yapıldı!`);
 		client.user.setStatus('online');
 	})
 	
 	.on('error', console.error)
 	.on('warn', console.warn)
 	.on('debug', log)
-	.on('disconnect', () => { logger.log('warn', 'BaÄŸlantÄ± koptu!'); })
-	.on('reconnecting', () => { logger.log('warn', 'Yeniden baÄŸlanÄ±lÄ±yor...'); })
+	.on('disconnect', () => { logger.log('warn', 'Bağlantı koptu!'); })
+	.on('reconnecting', () => { logger.log('warn', 'Yeniden bağlanılıyor...'); })
 	.on('commandError', (cmd, err) => {
 		if (err instanceof FriendlyError) return;
 		logger.log(`error`, `Hata! ${cmd.groupID}:${cmd.memberName}`, err);
@@ -288,7 +288,7 @@ client
 		if (member.guild.channels.get(logCh) === undefined || member.guild.channels.get(logCh) === null) return;
 		if (member.guild.channels.get(logCh).type === "text") {
 			var embed = new Discord.RichEmbed()
-			.setTitle('Ãœye katÄ±ldÄ±.')
+			.setTitle('Üye katıldı.')
 			.setAuthor(member.user.tag, member.user.avatarURL)
 			.setColor(3066993)
 			.setDescription(`<@!${member.user.id}>, ${member.user.tag}`)
@@ -308,7 +308,7 @@ client
 		if (member.guild.channels.get(logCh) === undefined || member.guild.channels.get(logCh) === null) return;
 		if (member.guild.channels.get(logCh).type === "text") {
 			var embed = new Discord.RichEmbed()
-			.setTitle('Ãœye ayrÄ±ldÄ±.')
+			.setTitle('Üye ayrıldı.')
 			.setAuthor(member.user.tag, member.user.avatarURL)
 			.setColor(15158332)
 			.setDescription(`<@!${member.user.id}>, ${member.user.tag}`)
@@ -328,7 +328,7 @@ client
 		if (guild.channels.get(logCh) === undefined || guild.channels.get(logCh) === null) return;
 		if (guild.channels.get(logCh).type === "text") {
 			var embed = new Discord.RichEmbed()
-			.setTitle('Ãœye yasaklandÄ±.')
+			.setTitle('Üye yasaklandı.')
 			.setAuthor(member.user.tag, member.user.avatarURL)
 			.setColor(15158332)
 			.setDescription(`<@!${member.user.id}>, ${member.user.tag}`)
@@ -349,7 +349,7 @@ client
 		if (guild.channels.get(logCh) === undefined || guild.channels.get(logCh) === null) return;
 		if (guild.channels.get(logCh).type === "text") {
 			var embed = new Discord.RichEmbed()
-			.setTitle('Ãœyenin yasaklamasÄ± kaldÄ±rÄ±ldÄ±.')
+			.setTitle('Üyenin yasaklaması kaldırıldı.')
 			.setAuthor(member.user.tag, member.user.avatarURL)
 			.setColor(3447003)
 			.setDescription(`<@!${member.user.id}>, ${member.user.tag}`)
@@ -372,7 +372,7 @@ client
 			var embed = new Discord.RichEmbed()
 			.setAuthor(msg.author.tag, msg.author.avatarURL)
 			.setColor(15158332)
-			.setDescription(`<@!${msg.author.id}> tarafÄ±ndan <#${msg.channel.id}> kanalÄ±na gÃ¶nderilen "${msg.content}" mesajÄ± silindi.`)
+			.setDescription(`<@!${msg.author.id}> tarafından <#${msg.channel.id}> kanalına gönderilen "${msg.content}" mesajı silindi.`)
 			.setFooter(`ID: ${msg.id}`)
 			msg.guild.channels.get(logCh).send({embed});
 		}
@@ -390,7 +390,7 @@ client
 				var embed = new Discord.RichEmbed()
 				.setColor(3066993)
 				.setAuthor(channel.guild.name, channel.guild.iconURL)
-				.setDescription(`<#${channel.id}> kanalÄ± oluÅŸturuldu. _(metin kanalÄ±)_`)
+				.setDescription(`<#${channel.id}> kanalı oluşturuldu. _(metin kanalı)_`)
 				.setFooter(`ID: ${channel.id}`)
 				channel.guild.channels.get(logCh).send({embed});
 			};
@@ -398,7 +398,7 @@ client
 				var embed = new Discord.RichEmbed()
 				.setColor(3066993)
 				.setAuthor(channel.guild.name, channel.guild.iconURL)
-				.setDescription(`${channel.name} kanalÄ± oluÅŸturuldu. _(sesli kanal)_`)
+				.setDescription(`${channel.name} kanalı oluşturuldu. _(sesli kanal)_`)
 				.setFooter(`ID: ${channel.id}`)
 				channel.guild.channels.get(logCh).send({embed});
 			}
@@ -417,7 +417,7 @@ client
 				let embed = new Discord.RichEmbed()
 				.setColor(3066993)
 				.setAuthor(channel.guild.name, channel.guild.iconURL)
-				.setDescription(`${channel.name} kanalÄ± silindi. _(metin kanalÄ±)_`)
+				.setDescription(`${channel.name} kanalı silindi. _(metin kanalı)_`)
 				.setFooter(`ID: ${channel.id}`)
 				channel.guild.channels.get(logCh).send({embed});
 			};
@@ -425,7 +425,7 @@ client
 				let embed = new Discord.RichEmbed()
 				.setColor(3066993)
 				.setAuthor(channel.guild.name, channel.guild.iconURL)
-				.setDescription(`${channel.name} kanalÄ± silindi. _(sesli kanal)_`)
+				.setDescription(`${channel.name} kanalı silindi. _(sesli kanal)_`)
 				.setFooter(`ID: ${channel.id}`)
 				channel.guild.channels.get(logCh).send({embed});
 			}
@@ -444,7 +444,7 @@ client
 			const embed = new Discord.RichEmbed()
 			.setColor(3066993)
 			.setAuthor(oldMsg.author.tag, oldMsg.author.avatarURL)
-			.setDescription(`${oldMsg.author} adlÄ± kullanÄ±cÄ± <#${oldMsg.channel.id}> kanalÄ±na gÃ¶nderdiÄŸi "${oldMsg.content}" mesajÄ±nÄ± "${newMsg.content}" olarak dÃ¼zenledi.`)
+			.setDescription(`${oldMsg.author} adlı kullanıcı <#${oldMsg.channel.id}> kanalına gönderdiği "${oldMsg.content}" mesajını "${newMsg.content}" olarak düzenledi.`)
 			.setFooter(`ID: ${oldMsg.id}`);
 			oldMsg.guild.channels.get(logCh).send({embed});
 		};
@@ -461,9 +461,9 @@ client.setProvider(
 
 client.registry
 	.registerGroups([
-		['eglence', 'EÄŸlence'],
+		['eglence', 'Eğlence'],
 		['bilgi', 'Bilgi'],
-		['muzik', 'MÃ¼zik'],
+		['muzik', 'Müzik'],
 		['moderasyon', 'Moderasyon'],
 		['minecraft', 'Minecraft'],
 		['util', 'Genel'],
