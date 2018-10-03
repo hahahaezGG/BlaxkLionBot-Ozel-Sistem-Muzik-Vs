@@ -1,5 +1,5 @@
 exports.QUEUE = client.queue;
 
-//exports.GOOGLE_API_KEY = 'AIzaSyCWDx2ab2PFdCZvsv80_kIc_XKlcLViPho';
+//exports.GOOGLE_API_KEY = 'AIzaSyByd4mh7uZbZasIon4N24BAgGH12Ln7J54';
 
-exports.GOOGLE_API_KEY = 'AIzaSyBI-kdmHoshPZ9bkxsfIF_8mpivrhCVr3k';
+exports.GOOGLE_API_KEY = 'AIzaSyByd4mh7uZbZasIon4N24BAgGH12Ln7J54';
