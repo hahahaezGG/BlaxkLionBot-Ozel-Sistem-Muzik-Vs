@@ -473,7 +473,7 @@ client.registry
 	.registerDefaults()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.login(bot.token);
+client.login(ayarlar.token);
 
 
 async function syncGuildCounts() {
